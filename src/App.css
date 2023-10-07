@@ -131,7 +131,9 @@
   background-color: var(--Dark-Blue);
 }
 
-
+.size-warning{
+  display: none;
+}
 
 @media screen and (max-width: 836px) {
   .App {
@@ -147,14 +149,17 @@
   }
 }
 
+
+
 @media screen and (max-width : 400px) {
   .size-warning {
     width: 100vw;
     height: 100vh;
     background-color: #2B4560;
-    opacity: 0.7;
+    opacity: 0.9;
     display: inline-block;
     position: absolute;
     top: 0;
+    text-align: center;
   }
 }
