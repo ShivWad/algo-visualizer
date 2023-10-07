@@ -29,17 +29,28 @@ const Visualizer = () => {
         setInputArr(newUnsortedArr);
     }, [newUnsortedArr]);
 
+
+    const startSortingAlgo = async (sortAlgo: () => Promise<void>) => {
+        dispatch(setIsSorting({ isSorting: true }));
+        await sortAlgo();
+        dispatch(setIsSorting({ isSorting: false }))
+    }
+
     useEffect(() => {
 
         switch (selectedAlgo) {
 
             case "Bubble":
-                const foo = async () => {
-                    dispatch(setIsSorting({ isSorting: true }));
-                    await sortingAlgos.bubbleSort();
-                    dispatch(setIsSorting({ isSorting: false }))
-                }
-                foo();
+                startSortingAlgo(sortingAlgos.startBubbleSort);
+                break;
+            case "Quick":
+                startSortingAlgo(sortingAlgos.startQuickSort);
+                break;
+            case "Merge":
+                startSortingAlgo(sortingAlgos.startMergeSort);
+                break;
+            case "Selection":
+                startSortingAlgo(sortingAlgos.startSelectionSort)
                 break;
         }
 

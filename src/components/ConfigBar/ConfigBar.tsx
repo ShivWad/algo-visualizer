@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { setRange, setSelectedSortAlgo, setIsSorting, setUnSortedArr } from '../../redux/globalSlice';
+import { setRange, setSelectedSortAlgo, setUnSortedArr } from '../../redux/globalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { reBuildArray } from '../utils';
-const sortingAlgorithms = ["Merge", "Quick", "Heap", "Bubble"]
+const sortingAlgorithms = ["Merge", "Quick", "Selection", "Bubble"]
 
 const ConfigBar = () => {
     const [sliderOpen, setSliderOpen] = useState<boolean>();
@@ -31,8 +31,8 @@ const ConfigBar = () => {
         <div className={`config-bar ${isSorting ? "disable" : ""}`}>
             <button className='global-button' onClick={() => handleGenerateNewArray()}>Generate New Array</button>
             <div className='stack-button'>
-                <button className='global-button' onClick={() => setSliderOpen(!sliderOpen)}>Speed && Array Size</button>
-                <input onChange={(e) => handleSliderChange(e)} type="range" min="5" max="160" value={localRange} className={`slider ${sliderOpen ? "open" : "close"}`} id="myRange" />
+                <button className='global-button' onClick={() => setSliderOpen(!sliderOpen)}>Array Size</button>
+                <input onChange={(e) => handleSliderChange(e)} type="range" min="5" max="160" value={localRange} className={`slider ${sliderOpen && !isSorting ? "open" : "close"}`} id="myRange" />
             </div>
             <div>
                 <select className=' global-button ' onChange={(e) => handleAlgoChange(e)} id="mounth">
