@@ -1,5 +1,18 @@
+:root {
+  --Dark-Blue: #2B4560;
+  --Midnight-Blue: #2F6D80;
+  --Tiffany-Blue: #6AA4B0;
+  --Ivory: #E1E7E0;
+}
+
+
 .App {
   text-align: center;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  grid-template-rows: 10% auto;
 }
 
 .App-logo {
@@ -13,26 +26,104 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.config-bar {
+  width: 80vw;
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 3px solid black;
+  border-radius: 1rem;
+  background-color: rgb(81, 119, 121);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.config-bar.disable{
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: wait;
+}
+
+.slider {
+  transition: all 300ms;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slider.open {
+  opacity: 1;
+  bottom: -125%;
+  pointer-events: all;
+}
+
+.stack-button {
+  position: relative;
+}
+
+.array-el-bar {
+  background-color: #f0f0f0;
+  color: black;
+  height: 75vh;
+  /* width: max-content; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.array-el-bar div {
+  background-color: var(--Dark-Blue);
+  transition: all 300ms;
+  display: inline-block;
+  width: 4px;
+  margin: 0 1px;
+}
+.select-styled {
+  display: none;
+  visibility: hidden;
+  padding-right: 10px;
+}
+
+.select-styled {
+  padding: 8px 15px;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.global-button {
+  font-size: large;
+  background-color: var(--Midnight-Blue);
+  color: var(--Ivory);
+  border: none;
+  padding: 0.5rem;
+  transition: all 300ms;
+  border-radius: 1rem;
+}
+
+
+
+.global-button:hover {
+  color: black;
+  background-color: var(--Ivory);
+  border: solid 0px;
+  cursor: pointer;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 20px 2px, rgba(6, 24, 44, 0.65) 0px 4px 20px -1px, rgba(255, 255, 255, 0.08) 0px 1px 20px 20px inset;
+}
+
+.global-button:active {
+  background-color: var(--Dark-Blue);
 }
