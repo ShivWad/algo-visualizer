@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { setRange, setSelectedSortAlgo, setUnSortedArr } from '../../redux/globalSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { reBuildArray } from '../utils';
@@ -6,10 +6,29 @@ const sortingAlgorithms = ["Merge", "Quick", "Selection", "Bubble"]
 
 const ConfigBar = () => {
     const [sliderOpen, setSliderOpen] = useState<boolean>();
-    const [localRange, setLocalRange] = useState(80);
+    const [localRange, setLocalRange] = useState(0);
+    const [max, setMaxRange] = useState<number>();
     // const [sortAlgorithm, setSortAlogrithm] = useState("");
     //@ts-ignore
     const isSorting = useSelector((state) => state.globalSlice.isSorting);
+
+    useEffect(() => {
+        let el = document.getElementById("array-el-bar-id");
+        console.log(el);
+        let width = el?.offsetWidth;
+
+        console.log("height>>>", width)
+        if (width == undefined) {
+            setMaxRange(130)
+            return;
+        }
+        let maxNumberOfEls = width / 7;
+
+        setMaxRange(maxNumberOfEls);
+        setLocalRange(maxNumberOfEls/2);
+        console.log("maxNumberOfEls>>>", maxNumberOfEls);
+
+    }, [])
 
     const dispatch = useDispatch();
     //@ts-ignore
@@ -32,7 +51,7 @@ const ConfigBar = () => {
             <button className='global-button' onClick={() => handleGenerateNewArray()}>Generate New Array</button>
             <div className='stack-button'>
                 <button className='global-button' onClick={() => setSliderOpen(!sliderOpen)}>Array Size</button>
-                <input onChange={(e) => handleSliderChange(e)} type="range" min="5" max="160" value={localRange} className={`slider ${sliderOpen && !isSorting ? "open" : "close"}`} id="myRange" />
+                <input onChange={(e) => handleSliderChange(e)} type="range" min="5" max={max} value={localRange} className={`slider ${sliderOpen && !isSorting ? "open" : "close"}`} id="myRange" />
             </div>
             <div>
                 <select className=' global-button ' onChange={(e) => handleAlgoChange(e)} id="mounth">

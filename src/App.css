@@ -44,7 +44,7 @@
   justify-content: space-around;
 }
 
-.config-bar.disable{
+.config-bar.disable {
   opacity: 0.5;
   pointer-events: none;
   cursor: wait;
@@ -92,6 +92,7 @@
   width: 4px;
   margin: 0 1px;
 }
+
 .select-styled {
   display: none;
   visibility: hidden;
@@ -105,6 +106,7 @@
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
+
 .global-button {
   font-size: large;
   background-color: var(--Midnight-Blue);
@@ -127,4 +129,32 @@
 
 .global-button:active {
   background-color: var(--Dark-Blue);
+}
+
+
+
+@media screen and (max-width: 836px) {
+  .App {
+    display: block;
+  }
+
+  .config-bar {
+    width: auto;
+  }
+
+  .global-button {
+    font-size: small;
+  }
+}
+
+@media screen and (max-width : 400px) {
+  .size-warning {
+    width: 100vw;
+    height: 100vh;
+    background-color: #2B4560;
+    opacity: 0.7;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
 }
