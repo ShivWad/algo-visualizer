@@ -82,6 +82,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   padding: 1rem;
+  border-radius: 1rem;
 }
 
 .array-el-bar div {
