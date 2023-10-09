@@ -1,6 +1,12 @@
 // @ts-nocheck 
 
-const delay = 200;
+
+const getSpeedVal = () => {
+    let speedEl = document.getElementById('speed-slider');
+    let speedVal = speedEl.value;
+    return speedVal;
+}
+
 const reBuildArray = (range: number) => {
     const min = 5;
     const max = 1000;
@@ -17,12 +23,14 @@ const startBubbleSort = async () => {
     for (let i = 0; i < ele.length - 1; i++) {
         // console.log('In ith loop');
         for (let j = 0; j < ele.length - i - 1; j++) {
+
             // console.log('In jth loop');
             ele[j].style.background = 'blue';
             ele[j + 1].style.background = 'blue';
             if (parseInt(ele[j].style.height) > parseInt(ele[j + 1].style.height)) {
                 // console.log('In if condition');
-                await waitforme(200);
+
+                await waitforme(getSpeedVal());
                 swap(ele[j], ele[j + 1]);
             }
             ele[j].style.background = 'cyan';
@@ -40,19 +48,21 @@ async function partitionLomuto(ele, l, r) {
     // color pivot element
     ele[r].style.background = 'red';
     for (let j = l; j <= r - 1; j++) {
+
         // color current element
         ele[j].style.background = 'yellow';
         // pauseChamp
-        await waitforme(delay);
+        await waitforme(getSpeedVal());
 
         if (parseInt(ele[j].style.height) < parseInt(ele[r].style.height)) {
+
             i++;
             swap(ele[i], ele[j]);
             // color 
             ele[i].style.background = 'orange';
             if (i != j) ele[j].style.background = 'orange';
             // pauseChamp
-            await waitforme(delay);
+            await waitforme(getSpeedVal());
         }
         else {
             // color if not less than pivot
@@ -61,7 +71,7 @@ async function partitionLomuto(ele, l, r) {
     }
     i++;
     // pauseChamp
-    await waitforme(delay);
+    await waitforme(getSpeedVal());
     swap(ele[i], ele[r]); // pivot height one
     // console.log(`i = ${i}`, typeof (i));
     // color
@@ -69,7 +79,7 @@ async function partitionLomuto(ele, l, r) {
     ele[i].style.background = 'green';
 
     // pauseChamp
-    await waitforme(delay);
+    await waitforme(getSpeedVal());
 
     // color
     for (let k = 0; k < ele.length; k++) {
@@ -114,7 +124,8 @@ async function merge(ele, low, mid, high) {
     let right = new Array(n2);
 
     for (let i = 0; i < n1; i++) {
-        await waitforme(delay);
+
+        await waitforme(getSpeedVal());
         // console.log('In merge left loop');
         // console.log(ele[low + i].style.height + ' at ' + (low + i));
         // color
@@ -122,17 +133,20 @@ async function merge(ele, low, mid, high) {
         left[i] = ele[low + i].style.height;
     }
     for (let i = 0; i < n2; i++) {
-        await waitforme(delay);
+
+        await waitforme(getSpeedVal());
         // console.log('In merge right loop');
         // console.log(ele[mid + 1 + i].style.height + ' at ' + (mid + 1 + i));
         // color
         ele[mid + 1 + i].style.background = 'yellow';
         right[i] = ele[mid + 1 + i].style.height;
     }
-    await waitforme(delay);
+
+    await waitforme(getSpeedVal());
     let i = 0, j = 0, k = low;
     while (i < n1 && j < n2) {
-        await waitforme(delay);
+
+        await waitforme(getSpeedVal());
 
 
         // To add color for which two r being compared for merging
@@ -164,7 +178,8 @@ async function merge(ele, low, mid, high) {
         }
     }
     while (i < n1) {
-        await waitforme(delay);
+
+        await waitforme(getSpeedVal());
         // color
         if ((n1 + n2) === ele.length) {
             ele[k].style.background = 'green';
@@ -177,7 +192,8 @@ async function merge(ele, low, mid, high) {
         k++;
     }
     while (j < n2) {
-        await waitforme(delay);
+
+        await waitforme(getSpeedVal());
         // color
         if ((n1 + n2) === ele.length) {
             ele[k].style.background = 'green';
@@ -218,10 +234,11 @@ async function selection() {
         // Change color of the position to swap with the next min
         ele[i].style.background = 'blue';
         for (let j = i + 1; j < ele.length; j++) {
+
             // Change color for the current comparision (in consideration for min_index)
             ele[j].style.background = 'red';
 
-            await waitforme(delay);
+            await waitforme(getSpeedVal());
             if (parseInt(ele[j].style.height) < parseInt(ele[min_index].style.height)) {
                 if (min_index !== i) {
                     // new min_index is found so change prev min_index color back to normal
@@ -234,7 +251,8 @@ async function selection() {
                 ele[j].style.background = 'cyan';
             }
         }
-        await waitforme(delay);
+
+        await waitforme(getgetSpeedVal()());
         swap(ele[min_index], ele[i]);
         // change the min element index back to normal as it is swapped 
         ele[min_index].style.background = 'cyan';

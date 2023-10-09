@@ -11,7 +11,7 @@
   display: grid;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
+  gap: 2rem;
   grid-template-rows: 10% auto;
 }
 
@@ -76,7 +76,8 @@
 .array-el-bar {
   background-color: #f0f0f0;
   color: black;
-  height: 75vh;
+  height: max-content;
+  min-height: 75vh;
   /* width: max-content; */
   display: flex;
   flex-direction: row;
